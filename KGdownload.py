@@ -1,9 +1,6 @@
 #酷狗批量下载器 | 手机分享链接
-import requests, json
-from bs4 import BeautifulSoup
+import requests, json, os
 from hashlib import md5
-from threading import Thread
-
 
 '''
 链接参数如下：
@@ -27,6 +24,10 @@ page
 
 class kg(object):
     def __init__(self):
+        try:
+            os.mkdir('download')
+        except FileExistsError:
+            pass
         iurl = input('>')
         can_list = iurl.replace('https://m3ws.kugou.com/share/zlist.html?','').split('&') 
 
